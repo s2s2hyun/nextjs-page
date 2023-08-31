@@ -1,6 +1,11 @@
+import { RootState } from "@/redux/store";
 import { css, Global } from "@emotion/react";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "./theme";
 
-const globalStyles = css`
+type ThemeType = typeof darkTheme;
+
+const globalStyles = (theme: ThemeType) => css`
   html,
   body,
   div,
@@ -105,6 +110,8 @@ const globalStyles = css`
   body {
     line-height: 1;
     font-size: 1.6rem;
+    background-color: ${theme.mode.mainBackground};
+    color: ${theme.mode.primaryText};
   }
   ol,
   ul {
@@ -130,6 +137,10 @@ const globalStyles = css`
   }
 `;
 
-const GlobalStyles = () => <Global styles={globalStyles} />;
+const GlobalStyles = () => {
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+  const themeToApply = isDarkMode ? darkTheme : lightTheme;
 
+  return <Global styles={globalStyles(themeToApply)} />;
+};
 export default GlobalStyles;

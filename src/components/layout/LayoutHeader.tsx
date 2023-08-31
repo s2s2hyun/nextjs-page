@@ -3,7 +3,7 @@ import { toggleTheme } from "@/redux/features/themeSlice";
 import { RootState } from "@/redux/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import styled from "@emotion/styled";
 // interface LayoutHeaderProps {
 //   handleThemeChange: (theme: Theme) => void;
 // }
@@ -22,15 +22,19 @@ export default function LayoutHeader() {
 
   return (
     <header>
-      <section>
+      <HeaderWrapper>
         <button type="button" onClick={handleThemeChange}>
           Toggle Theme
         </button>
-
         <br />
         {/* <button type="button">dark</button> */}
         <p>{stringIsDarkMode}</p>
-      </section>
+      </HeaderWrapper>
     </header>
   );
 }
+
+const HeaderWrapper = styled.section`
+  width: 100%;
+  height: 100px;
+`;
