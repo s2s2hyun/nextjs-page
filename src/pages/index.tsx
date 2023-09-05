@@ -8,7 +8,7 @@ export default function Home() {
       <div>
         <p>
           Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
+          <code className="font-mono font-bold">Start</code>
         </p>
       </div>
     </section>
